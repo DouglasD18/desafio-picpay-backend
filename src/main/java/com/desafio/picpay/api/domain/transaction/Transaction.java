@@ -1,6 +1,7 @@
 package com.desafio.picpay.api.domain.transaction;
 
 import com.desafio.picpay.api.domain.user.User;
+import com.desafio.picpay.api.dtos.TransactionDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,4 +32,5 @@ public class Transaction {
     @JoinColumn(name = "receiver_id")
     private User receiver;
     private LocalDateTime timeStamp;
+
 }

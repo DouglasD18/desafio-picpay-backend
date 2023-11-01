@@ -20,7 +20,7 @@ public class TransactionService {
     @Autowired
     private UserServices userServices;
 
-    public void createTransaction(TransactionDTO transaction) throws Exception {
+    public Transaction createTransaction(TransactionDTO transaction) throws Exception {
         User sender = this.userServices.findUserById(transaction.senderId());
         User receiver = this.userServices.findUserById(transaction.receiverId());
 
@@ -35,7 +35,7 @@ public class TransactionService {
         updateReceiver(receiver, transaction.amount());
         updateSender(sender, transaction.amount());
 
-        this.transactionRepository.save(newTransaction);
+        return this.transactionRepository.save(newTransaction);
     }
 
     public void updateSender(User sender, BigDecimal amount) {
